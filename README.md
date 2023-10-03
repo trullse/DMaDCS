@@ -88,6 +88,7 @@ Database models and database control systems labs
 </pre>
 
 ## Block-scheme
-![final](https://github.com/trullse/DMaDCS/assets/93009588/3f6fe8a2-42ac-4432-9936-3413aa21da59)
+![drawSQL-pharmacy-export-2023-10-03](https://github.com/trullse/DMaDCS/assets/93009588/83489bb0-57f0-470a-a067-b6cdeb5b7b50)
+
 
 
