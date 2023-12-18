@@ -58,7 +58,7 @@ Database models and database control systems labs
     "id" BIGINT PRIMARY KEY NOT NULL,
     "pharmacy_dep_id" BIGINT NOT NULL -> pharmacy_department,
     "supplier_id" BIGINT NOT NULL -> supplier,
-    "date" DATE NULL
+    "date" DATE NOT NULL
 </pre>
 ### category
 <pre>
@@ -70,14 +70,18 @@ Database models and database control systems labs
     "id" BIGINT PRIMARY KEY NOT NULL,
     "name" BIGINT NOT NULL,
     "description" BIGINT NOT NULL,
-    "supplier_id" BIGINT NOT NULL -> supplier
+    "supplier_id" BIGINT NOT NULL -> supplier,
+    "category_id" BIGINT NOT NULL -> category,
+    "price" NUMERIC NOT NULL
 </pre>
 ### sale
 <pre>
     "id" BIGINT PRIMARY KEY NOT NULL,
     "date" DATE NOT NULL,
     "pharmacy_dep_id" BIGINT NOT NULL -> pharmacy_department,
-    "user_id" BIGINT NOT NULL -> user
+    "user_id" BIGINT NOT NULL -> user,
+    "is_complete" BOOLEAN NOT NULL,
+    "total_price" NUMERIC
 </pre>
 ### Log
 <pre>
