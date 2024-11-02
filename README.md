@@ -3,40 +3,40 @@ Database models and database control systems labs
 
 ## Functional requirements
 * User authorithation
-* Role system (user, admin)
+* Role system (client, employee)
 * Logging user actions
 ### For unathorised user:
 * watching medicines list
 * wathcing medicines categories
 ### For authorised user:
-* Sale management
+* Make an order
 * Add feedback
-### For admin:
-* User management
+### For employee:
 * Medicine management
 * Medicine category management
-* Supplier management
-* Department management
-* Feedback management
+* Supplier_delivery management
+* Sale management
 
 ## Entities
 ### user
 <pre>
-    "id" BIGINT NOT NULL,
+    "id" BIGINT PRIMARY KEY NOT NULL,
     "name" VARCHAR(255) NOT NULL,
     "surname" VARCHAR(255) NOT NULL,
     "birth_date" DATE NOT NULL,
     "role_id" BIGINT NOT NULL -> role,
-    "pharmacy_dep_id" BIGINT NULL -> pharmacy_department
+    "pharmacy_dep_id" BIGINT NULL -> pharmacy_department,
+    "login" VARCHAR(255) NOT NULL,
+    "password" VARCHAR(255) NOT NULL
 </pre>
 ### role
 <pre>
-    "id" BIGINT NOT NULL,
+    "id" BIGINT PRIMARY KEY NOT NULL,
     "name" VARCHAR(255) NOT NULL
 </pre>
 ### pharmacy_department
 <pre>
-    "id" BIGINT NOT NULL,
+    "id" BIGINT PRIMARY KEY NOT NULL,
     "address" VARCHAR(255) NOT NULL
 </pre>
 ### feedback
@@ -58,7 +58,7 @@ Database models and database control systems labs
     "id" BIGINT PRIMARY KEY NOT NULL,
     "pharmacy_dep_id" BIGINT NOT NULL -> pharmacy_department,
     "supplier_id" BIGINT NOT NULL -> supplier,
-    "date" DATE NULL
+    "date" DATE NOT NULL
 </pre>
 ### category
 <pre>
@@ -70,14 +70,18 @@ Database models and database control systems labs
     "id" BIGINT PRIMARY KEY NOT NULL,
     "name" BIGINT NOT NULL,
     "description" BIGINT NOT NULL,
-    "supplier_id" BIGINT NOT NULL -> supplier
+    "supplier_id" BIGINT NOT NULL -> supplier,
+    "category_id" BIGINT NOT NULL -> category,
+    "price" NUMERIC NOT NULL
 </pre>
 ### sale
 <pre>
     "id" BIGINT PRIMARY KEY NOT NULL,
     "date" DATE NOT NULL,
     "pharmacy_dep_id" BIGINT NOT NULL -> pharmacy_department,
-    "cashier_id" BIGINT NOT NULL -> user
+    "user_id" BIGINT NOT NULL -> user,
+    "is_complete" BOOLEAN NOT NULL,
+    "total_price" NUMERIC
 </pre>
 ### Log
 <pre>
@@ -88,5 +92,7 @@ Database models and database control systems labs
 </pre>
 
 ## Block-scheme
+![drawSQL-pharmacy-export-2023-10-03](https://github.com/trullse/DMaDCS/assets/93009588/83489bb0-57f0-470a-a067-b6cdeb5b7b50)
 
-![drawSQL-pharmacy-export-2023-09-25 (1)](https://github.com/trullse/DMaDCS/assets/93009588/2e86ee50-1985-4e4c-8d70-4713cc628bd8)
+
+
