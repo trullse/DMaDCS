@@ -1,0 +1,10 @@
+CREATE TRIGGER sale_medicine_after_insert
+AFTER INSERT ON sale_medicine
+FOR EACH ROW
+BEGIN
+  IF NEW.total_price IS NULL THEN
+    UPDATE sale
+    SET total_price = NEW.price
+    WHERE id = NEW.sale_id;
+  END IF;
+END;
